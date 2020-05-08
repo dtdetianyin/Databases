@@ -1,0 +1,23 @@
+InstallMysqlonLinux
+
+1. 
+sudo apt-get update
+sudo apt-get install mysql-server
+sudo mysql_secure_installation utility
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+2. log in with root user
+sudo /usr/bin/mysql -u root -p
+
+3. create database
+CREATE DATABASE demodb;
+
+4. create test user
+
+INSERT INTO mysql.user (User,Host,authentication_string,ssl_cipher,x509_issuer,x509_subject)
+VALUES('demouser','localhost',PASSWORD('demopassword'),'','','');
+FLUSH PRIVILEGES;
+
+GRANT ALL PRIVILEGES ON demodb.* to demouser@localhost;
+FLUSH PRIVILEGES;
